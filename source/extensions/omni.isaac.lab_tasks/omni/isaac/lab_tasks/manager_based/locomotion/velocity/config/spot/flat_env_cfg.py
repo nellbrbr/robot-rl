@@ -340,7 +340,7 @@ class SpotFlatEnvCfg(LocomotionVelocityRoughEnvCfg):
         self.scene.robot = SPOT_CFG.replace(prim_path="{ENV_REGEX_NS}/Robot")
 
         # terrain
-
+        ### UNCOMMENT TO TRAIN OR PLAY A POLICY ON A USD MESH ###
         # self.scene.terrain = TerrainImporterCfg(
         #     prim_path="/World/ground",
         #     terrain_type="usd",
