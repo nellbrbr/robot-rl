@@ -92,6 +92,7 @@ def main():
     # load previously trained model
     ppo_runner = OnPolicyRunner(env, agent_cfg.to_dict(), log_dir=None, device=agent_cfg.device)
     ppo_runner.load(resume_path)
+    print(resume_path)
 
     # obtain the trained policy for inference
     policy = ppo_runner.get_inference_policy(device=env.unwrapped.device)
@@ -108,6 +109,7 @@ def main():
     # reset environment
     obs, _ = env.get_observations()
     timestep = 0
+
     # simulate environment
     while simulation_app.is_running():
         # run everything in inference mode
@@ -116,6 +118,7 @@ def main():
             actions = policy(obs)
             # env stepping
             obs, _, _, _ = env.step(actions)
+
         if args_cli.video:
             timestep += 1
             # Exit the play loop after recording one video

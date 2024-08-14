@@ -31,7 +31,11 @@ def terrain_out_of_bounds(
     """
     if env.scene.cfg.terrain.terrain_type == "plane":
         return False  # we have infinite terrain because it is a plane
-    elif env.scene.cfg.terrain.terrain_type == "generator":
+    elif env.scene.cfg.terrain.terrain_type in ("usd", "generator"):
+        if env.scene.cfg.terrain.terrain_type == "usd": 
+            # hard coded for safety park mesh, TODO: make dynamic 
+            map_width, map_height = 100.32, 80.9 #safety_park_fourth_train
+            #map_width, map_height = 185.26, 146.9 #Full_Park_Flattened
         # obtain the size of the sub-terrains
         terrain_gen_cfg = env.scene.terrain.cfg.terrain_generator
         grid_width, grid_length = terrain_gen_cfg.size

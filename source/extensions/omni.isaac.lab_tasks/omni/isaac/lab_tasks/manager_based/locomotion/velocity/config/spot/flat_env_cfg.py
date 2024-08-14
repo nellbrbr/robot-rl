@@ -340,6 +340,29 @@ class SpotFlatEnvCfg(LocomotionVelocityRoughEnvCfg):
         self.scene.robot = SPOT_CFG.replace(prim_path="{ENV_REGEX_NS}/Robot")
 
         # terrain
+
+        # self.scene.terrain = TerrainImporterCfg(
+        #     prim_path="/World/ground",
+        #     terrain_type="usd",
+        #     #usd_path="/home/nell/USDs/full_park_low_res_with_colliders.usd",
+        #     usd_path="/home/nell/USDs/safety_park_fourth_train.usd",
+        #     #usd_path="/home/nell/USDs/Full_Park_Flattened.usd",
+        #     # terrain_generator=COBBLESTONE_ROAD_CFG,
+        #     # max_init_terrain_level=COBBLESTONE_ROAD_CFG.num_rows - 1,
+        #     collision_group=-1,
+        #     physics_material=sim_utils.RigidBodyMaterialCfg(
+        #         friction_combine_mode="multiply",
+        #         restitution_combine_mode="multiply",
+        #         static_friction=1.0,
+        #         dynamic_friction=1.0,
+        #     ),
+        #     # visual_material=sim_utils.MdlFileCfg(
+        #     #     mdl_path=f"{ISAACLAB_NUCLEUS_DIR}/Materials/TilesMarbleSpiderWhiteBrickBondHoned/TilesMarbleSpiderWhiteBrickBondHoned.mdl",
+        #     #     project_uvw=True,
+        #     #     texture_scale=(0.25, 0.25),
+        #     # ),
+        #     debug_vis=False,
+        # )
         self.scene.terrain = TerrainImporterCfg(
             prim_path="/World/ground",
             terrain_type="generator",
@@ -385,4 +408,4 @@ class SpotFlatEnvCfg_PLAY(SpotFlatEnvCfg):
         self.observations.policy.enable_corruption = False
         # remove random pushing event
         # self.events.base_external_force_torque = None
-        # self.events.push_robot = None
+        #self.events.push_robot = None

@@ -2,8 +2,3 @@
 # All rights reserved.
 #
 # SPDX-License-Identifier: BSD-3-Clause
-
-"""Navigation environments."""
-
-from .config import anymal_c
-from .config import spot
