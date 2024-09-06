@@ -24,6 +24,7 @@ parser.add_argument(
 parser.add_argument("--num_envs", type=int, default=None, help="Number of environments to simulate.")
 parser.add_argument("--task", type=str, default=None, help="Name of the task.")
 parser.add_argument("--seed", type=int, default=None, help="Seed used for the environment")
+parser.add_argument("--keyboard", action="store_true", default=False, help="Use a keyboard to control the robot.")
 # append RSL-RL cli arguments
 cli_args.add_rsl_rl_args(parser)
 # append AppLauncher cli args
@@ -42,6 +43,7 @@ simulation_app = app_launcher.app
 import gymnasium as gym
 import os
 import torch
+
 
 from rsl_rl.runners import OnPolicyRunner
 
@@ -106,18 +108,36 @@ def main():
         ppo_runner.alg.actor_critic, normalizer=ppo_runner.obs_normalizer, path=export_model_dir, filename="policy.onnx"
     )
 
+    if args_cli.keyboard:
+        from omni.isaac.lab.devices.keyboard.se2_keyboard import Se2Keyboard
+        
+        keyboard = Se2Keyboard(
+            v_x_sensitivity=2.0, 
+            v_y_sensitivity=1.0, 
+            omega_z_sensitivity=1.6
+            )
+        
+        print(keyboard)
+
     # reset environment
     obs, _ = env.get_observations()
     timestep = 0
-
     # simulate environment
     while simulation_app.is_running():
         # run everything in inference mode
         with torch.inference_mode():
+            if args_cli.keyboard:
+            # read command from keyboard and insert into observations
+                cmd = keyboard.advance()
+                print("COMMAND:", cmd)
+                obs[:, 9:12] = torch.Tensor(cmd)
             # agent stepping
             actions = policy(obs)
+            print("ACTIONS:", actions)
+            print()
             # env stepping
             obs, _, _, _ = env.step(actions)
+            print("COMMAND:", obs[:, 9:12])
 
         if args_cli.video:
             timestep += 1

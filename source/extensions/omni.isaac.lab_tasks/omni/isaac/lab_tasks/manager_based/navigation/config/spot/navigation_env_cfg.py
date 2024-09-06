@@ -18,8 +18,8 @@ from omni.isaac.lab.utils.assets import ISAACLAB_NUCLEUS_DIR
 import omni.isaac.lab_tasks.manager_based.locomotion.velocity.config.spot.mdp as spot_mdp
 import omni.isaac.lab_tasks.manager_based.navigation.mdp as mdp
 from omni.isaac.lab_tasks.manager_based.locomotion.velocity.config.spot.flat_env_cfg import SpotFlatEnvCfg
-
 LOW_LEVEL_ENV_CFG = SpotFlatEnvCfg()
+
 ISAACLAB_DIR = "/home/nell/IsaacLab"
 
 @configclass
@@ -124,7 +124,7 @@ class TerminationsCfg:
     time_out = DoneTerm(func=mdp.time_out, time_out=True)
     base_contact = DoneTerm(
         func=mdp.illegal_contact,
-        params={"sensor_cfg": SceneEntityCfg("contact_forces", body_names="base"), "threshold": 1.0},
+        params={"sensor_cfg": SceneEntityCfg("contact_forces", body_names="body"), "threshold": 1.0},
     )
 
 
@@ -162,7 +162,7 @@ class NavigationEnvCfg_PLAY(NavigationEnvCfg):
         super().__post_init__()
 
         # make a smaller scene for play
-        self.scene.num_envs = 50
+        self.scene.num_envs = 4
         self.scene.env_spacing = 2.5
         # disable randomization for play
         self.observations.policy.enable_corruption = False

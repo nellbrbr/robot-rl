@@ -37,13 +37,14 @@ def terrain_out_of_bounds(
             map_width, map_height = 100.32, 80.9 #safety_park_fourth_train
             #map_width, map_height = 185.26, 146.9 #Full_Park_Flattened
         # obtain the size of the sub-terrains
-        terrain_gen_cfg = env.scene.terrain.cfg.terrain_generator
-        grid_width, grid_length = terrain_gen_cfg.size
-        n_rows, n_cols = terrain_gen_cfg.num_rows, terrain_gen_cfg.num_cols
-        border_width = terrain_gen_cfg.border_width
-        # compute the size of the map
-        map_width = n_rows * grid_width + 2 * border_width
-        map_height = n_cols * grid_length + 2 * border_width
+        else:
+            terrain_gen_cfg = env.scene.terrain.cfg.terrain_generator
+            grid_width, grid_length = terrain_gen_cfg.size
+            n_rows, n_cols = terrain_gen_cfg.num_rows, terrain_gen_cfg.num_cols
+            border_width = terrain_gen_cfg.border_width
+            # compute the size of the map
+            map_width = n_rows * grid_width + 2 * border_width
+            map_height = n_cols * grid_length + 2 * border_width
 
         # extract the used quantities (to enable type-hinting)
         asset: RigidObject = env.scene[asset_cfg.name]
