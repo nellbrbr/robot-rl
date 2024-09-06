@@ -1,4 +1,38 @@
-![Isaac Lab](docs/source/_static/isaaclab.jpg)
+
+# Training & Testing a Quadruped Locomotion Policy with Isaac Lab
+
+## Installation
+- Confirm that your system meets the minimum requirements for Isaac Sim as described [here](https://docs.omniverse.nvidia.com/isaacsim/latest/installation/requirements.html). Note: It is recommended that your GPU has at least 16GB of VRAM for Isaac Lab.
+- Install Isaac Sim and Isaac Lab following [these instructions](https://isaac-sim.github.io/IsaacLab/source/setup/installation/index.html) (substitute **this** repo for the one specified).
+- You may wish to follow [these instructions](https://isaac-sim.github.io/IsaacLab/source/setup/developer.html) to set up your development environment, but it should not be necessary.
+
+## Locomotion Training with Boston Dynamics Spot
+
+### To train a Spot locomotion policy:
+
+```
+cd <path-to-this-repo>
+./isaaclab -p source/standalone/workflows/rsl_rl/train.py --task Isaac-Velocity-Flat-Spot-v0 --num_envs 4096 --headless --video --enable_cameras --max_iterations 20000
+```
+
+### To evaluate the policy without keyboard control:
+
+```
+./isaaclab -p source/standalone/workflows/rsl_rl/play.py --task Isaac-Velocity-Flat-Spot-Play-v0 --num_envs 1
+```
+
+### To evaluate the policy with keyboard control:
+
+```
+./isaaclab -p source/standalone/workflows/rsl_rl/play.py --task Isaac-Velocity-Flat-Spot-Play-v0 --num_envs 1 --keyboard
+```
+### Key Bindings for Velocity Commands
+
+|Command |Key (+ve axis) |Key (-ve axis) |
+|--------|--------|--------|
+| Move along x-axis | Numpad 8 / Arrow Up | Numpad 2 / Arrow Down |
+| Move along y-axis | Numpad 4 / Arrow Right | Numpad 6 / Arrow Left|
+| Rotate along z-axis | Numpad 7 / X | Numpad 9 / Y |
 
 ---
 
