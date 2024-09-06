@@ -17,6 +17,8 @@ cd <path-to-this-repo>
 
 ### To evaluate the policy without keyboard control (command manager will randomly sample commands, and you will not be able to teleoperate the robot):
 
+Change the value after --num_envs if you wish to play the policy with more than 1 robot. 
+
 ```
 ./isaaclab.sh -p source/standalone/workflows/rsl_rl/play.py --task Isaac-Velocity-Flat-Spot-Play-v0 --num_envs 1
 ```
