@@ -111,6 +111,7 @@ def main():
     if args_cli.keyboard:
         from omni.isaac.lab.devices.keyboard.se2_keyboard import Se2Keyboard
         
+        # These were set through trial and error with Spot but may be adjusted as needed
         keyboard = Se2Keyboard(
             v_x_sensitivity=2.0, 
             v_y_sensitivity=1.0, 
@@ -129,15 +130,11 @@ def main():
             if args_cli.keyboard:
             # read command from keyboard and insert into observations
                 cmd = keyboard.advance()
-                print("COMMAND:", cmd)
                 obs[:, 9:12] = torch.Tensor(cmd)
             # agent stepping
             actions = policy(obs)
-            print("ACTIONS:", actions)
-            print()
             # env stepping
             obs, _, _, _ = env.step(actions)
-            print("COMMAND:", obs[:, 9:12])
 
         if args_cli.video:
             timestep += 1
