@@ -15,7 +15,7 @@ cd <path-to-this-repo>
 ./isaaclab -p source/standalone/workflows/rsl_rl/train.py --task Isaac-Velocity-Flat-Spot-v0 --num_envs 4096 --headless --video --enable_cameras --max_iterations 20000
 ```
 
-### To evaluate the policy without keyboard control:
+### To evaluate the policy without keyboard control (command manager will randomly sample commands, and you will not be able to teleoperate the robot):
 
 ```
 ./isaaclab -p source/standalone/workflows/rsl_rl/play.py --task Isaac-Velocity-Flat-Spot-Play-v0 --num_envs 1
