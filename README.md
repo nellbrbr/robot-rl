@@ -40,6 +40,10 @@ Change the value after --num_envs if you wish to play the policy with more than 
 | Move along y-axis | Numpad 4 / Arrow Right | Numpad 6 / Arrow Left|
 | Rotate along z-axis | Numpad 7 / X | Numpad 9 / Y |
 
+### Using Other Included Training Environments
+
+To use one of the other training environments, which are listed [here](https://isaac-sim.github.io/IsaacLab/source/features/environments.html), simply replace the task name in the above commands with the name listed of the environment you want to use. You may also want to change num_envs and max_iterations to improve policy performance or reduce training time. If you use a custom mesh for your terrain, you may need to reduce num_envs to prevent your GPU from running out of memory (depends on your setup; [multi-gpu training](https://isaac-sim.github.io/IsaacLab/source/features/multi_gpu.html) is also supported). 
+
 ---
 
 # Isaac Lab
