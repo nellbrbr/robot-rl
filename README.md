@@ -6,7 +6,7 @@ This repo is a slightly modified version of [the official Isaac Lab repo](https:
 For instructions on deploying a trained Boston Dynamics Spot locomotion policy on a real robot, see [this technical blog](https://developer.nvidia.com/blog/closing-the-sim-to-real-gap-training-spot-quadruped-locomotion-with-nvidia-isaac-lab/).
 
 ## Installation
-- Confirm that your system meets the minimum requirements for Isaac Sim as described [here](https://docs.omniverse.nvidia.com/isaacsim/latest/installation/requirements.html). Note: It is recommended that your GPU has at least 16GB of VRAM for Isaac Lab.
+- Confirm that your system meets the minimum requirements for Isaac Sim as described [here](https://docs.omniverse.nvidia.com/isaacsim/latest/installation/requirements.html). Note: It is recommended that your GPU has at least 16GB of VRAM for Isaac Lab. Your GPU must be RTX enabled.
 - Install Isaac Sim and Isaac Lab following [these instructions](https://isaac-sim.github.io/IsaacLab/source/setup/installation/index.html) (substitute **this** repo for the one specified).
 - You may wish to follow [these instructions](https://isaac-sim.github.io/IsaacLab/source/setup/developer.html) to set up your development environment, but it should not be necessary.
 
